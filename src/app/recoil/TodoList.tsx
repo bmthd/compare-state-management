@@ -7,8 +7,8 @@ export const TodoList = () => {
   const { todoIds } = useTodo();
   return (
     <>
-      {todoIds.map((id, i) => {
-        return <TodoCard key={i} id={id} />;
+      {todoIds.map((id) => {
+        return <TodoCard key={id} id={id} />;
       })}
     </>
   );
