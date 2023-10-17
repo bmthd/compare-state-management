@@ -7,14 +7,20 @@ const todosAtom = atom<Todo[]>([]);
 
 const todosAtomsAtom = splitAtom(todosAtom);
 
-export const useTodoValue = (index: number) => {
-  const todoAtoms = useAtomValue(todosAtomsAtom);
-  const todoAtom = todoAtoms[index];
-  const todo = useAtomValue(todoAtom);
-  return todo;
-};
+export const useTodo = () => {
+  const useTodoIds = () => {
+    const todoAtoms = useAtomValue(todosAtomsAtom);
+    const todoIds = todoAtoms.map((_, i) => i);
+    return todoIds;
+  };
 
-export const useTodoMutation = () => {
+  const useTodoValue = (index: number) => {
+    const todoAtoms = useAtomValue(todosAtomsAtom);
+    const todoAtom = todoAtoms[index];
+    const todo = useAtomValue(todoAtom);
+    return todo;
+  };
+
   const setTodos = useSetAtom(todosAtom);
 
   const addTodo = useCallback(
@@ -39,6 +45,8 @@ export const useTodoMutation = () => {
   );
 
   return {
+    useTodoIds,
+    useTodoValue,
     addTodo,
     deleteTodo,
     updateTodo,
