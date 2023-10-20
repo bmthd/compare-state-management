@@ -1,4 +1,4 @@
-import { useTodo } from "@/app/recoil/state";
+import { useTodo } from "@/app/jotai/jotai";
 
 type Props = {
   id: number;

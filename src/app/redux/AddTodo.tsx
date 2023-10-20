@@ -2,7 +2,7 @@
 
 import { Todo } from "@/types";
 import { FormEventHandler } from "react";
-import { useTodo } from "./recoil";
+import { useTodo } from "./redux";
 
 export const AddTodoForm = () => {
   const { addTodo } = useTodo();

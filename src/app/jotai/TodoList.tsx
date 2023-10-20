@@ -1,11 +1,10 @@
 "use client";
 
-import { TodoCard } from "@/components/TodoCard";
-import { useTodo } from "./state";
+import { TodoCard } from "@/app/jotai/TodoCard";
+import { useTodo } from "./jotai";
 
 export const TodoList = () => {
-  const { useTodoIds } = useTodo();
-  const todoIds = useTodoIds();
+  const { todoIds } = useTodo();
   return (
     <>
       {todoIds.map((id) => {

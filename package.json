@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.7",
     "jotai": "^2.4.3",
     "next": "13.5.4",
     "react": "^18",

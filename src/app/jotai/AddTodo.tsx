@@ -2,7 +2,7 @@
 
 import { Todo } from "@/types";
 import { FormEventHandler } from "react";
-import { useTodo } from "./state";
+import { useTodo } from "./jotai";
 
 export const AddTodoForm = () => {
   const { addTodo } = useTodo();
@@ -14,6 +14,7 @@ export const AddTodoForm = () => {
       isComplete: false,
     };
     addTodo(todo);
+    e.currentTarget.reset();
   };
 
   return (

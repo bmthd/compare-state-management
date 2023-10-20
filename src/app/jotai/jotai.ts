@@ -8,11 +8,7 @@ const todosAtom = atom<Todo[]>([]);
 const todosAtomsAtom = splitAtom(todosAtom);
 
 export const useTodo = () => {
-  const useTodoIds = () => {
-    const todoAtoms = useAtomValue(todosAtomsAtom);
-    const todoIds = todoAtoms.map((_, i) => i);
-    return todoIds;
-  };
+  const todoIds = useAtomValue(todosAtomsAtom).map((_, i) => i);
 
   const useTodoValue = (index: number) => {
     const todoAtoms = useAtomValue(todosAtomsAtom);
@@ -45,7 +41,7 @@ export const useTodo = () => {
   );
 
   return {
-    useTodoIds,
+    todoIds,
     useTodoValue,
     addTodo,
     deleteTodo,

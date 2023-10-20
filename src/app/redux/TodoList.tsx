@@ -1,7 +1,7 @@
 "use client";
 
-import { TodoCard } from "@/app/recoil/TodoCard";
-import { useTodo } from "./recoil";
+import { TodoCard } from "@/app/redux/TodoCard";
+import { useTodo } from "./redux";
 
 export const TodoList = () => {
   const { todoIds } = useTodo();
