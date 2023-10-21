@@ -1,56 +1,50 @@
 import { Todo } from "@/types";
+import { useCallback } from "react";
 import { create } from "zustand";
 
 type TodoState = {
   todos: Todo[];
-  addTodo: (todo: Todo) => void;
-  deleteTodo: (id: number) => void;
-  updateTodo: (id: number, todo: Todo) => void;
+  add: (todo: Todo) => void;
+  remove: (id: number) => void;
+  update: (id: number, todo: Todo) => void;
 };
 
-const useStore = create<TodoState>((set) => ({
+const useTodoStore = create<TodoState>((set) => ({
   todos: [],
-  addTodo: (todo: Todo) =>
+  add: (todo: Todo) =>
     set((state: TodoState) => ({ todos: [...state.todos, todo] })),
-  deleteTodo: (id: number) =>
+  remove: (id: number) =>
     set((state: TodoState) => ({
-      todos: state.todos.filter((todo) => todo.id !== id),
+      todos: state.todos.filter((_, i) => i !== id),
     })),
-  updateTodo: (id: number, todo: Todo) =>
+  update: (id: number, todo: Todo) =>
     set((state: TodoState) => ({
-      todos: state.todos.map((t) => (t.id === id ? todo : t)),
+      todos: state.todos.map((t, i) => (i === id ? todo : t)),
     })),
 }));
 
 export const useTodo = () => {
-  const todos = useStore((state) => state.todos);
+  const { todos, add, remove, update } = useTodoStore();
   const todoIds = todos.map((_, i) => i);
 
   const useTodoValue = (index: number) => {
     return todos[index];
   };
 
-  const addTodo = (todo: Todo) => {
-    useStore.setState((state) => ({ todos: [...state.todos, todo] }));
-  };
+  const addTodo = useCallback((todo: Todo) => add(todo), []);
 
-  const deleteTodo = (id: number) => {
-    useStore.setState((state) => ({
-      todos: state.todos.filter((todo) => todo.id !== id),
-    }));
-  };
+  const removeTodo = useCallback((id: number) => remove(id), []);
 
-  const updateTodo = (id: number, todo: Todo) => {
-    useStore.setState((state) => ({
-      todos: state.todos.map((t) => (t.id === id ? todo : t)),
-    }));
-  };
+  const updateTodo = useCallback(
+    (id: number, todo: Todo) => update(id, todo),
+    []
+  );
 
   return {
     todoIds,
     useTodoValue,
     addTodo,
-    deleteTodo,
+    removeTodo,
     updateTodo,
   };
 };

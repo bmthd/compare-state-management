@@ -10,7 +10,7 @@ const todoSlice = createSlice({
     addTodo: (state, action) => {
       state.push(action.payload);
     },
-    deleteTodo: (state, action) => {
+    removeTodo: (state, action) => {
       return state.filter((_, i) => i !== action.payload);
     },
     updateTodo: (state, action) => {
@@ -38,9 +38,9 @@ export const useTodo = () => {
     [dispatch]
   );
 
-  const deleteTodo = useCallback(
+  const removeTodo = useCallback(
     (index: number) => {
-      dispatch(todoSlice.actions.deleteTodo(index));
+      dispatch(todoSlice.actions.removeTodo(index));
     },
     [dispatch]
   );
@@ -56,7 +56,7 @@ export const useTodo = () => {
     todoIds,
     useTodoValue,
     addTodo,
-    deleteTodo,
+    removeTodo,
     updateTodo,
   };
 };

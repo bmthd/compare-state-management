@@ -26,7 +26,7 @@ export const useTodo = () => {
     [setTodos]
   );
 
-  const deleteTodo = useCallback(
+  const removeTodo = useCallback(
     (index: number) => {
       setTodos((prev) => prev.filter((_, i) => i !== index));
     },
@@ -44,7 +44,7 @@ export const useTodo = () => {
     todoIds,
     useTodoValue,
     addTodo,
-    deleteTodo,
+    removeTodo,
     updateTodo,
   };
 };

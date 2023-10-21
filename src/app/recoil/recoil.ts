@@ -35,7 +35,7 @@ export const useTodo = () => {
     []
   );
 
-  const deleteTodo = useRecoilCallback(
+  const removeTodo = useRecoilCallback(
     ({ set, reset }) =>
       (id: number) => {
         set(todoIdsAtom, (prev) => prev.filter((i) => i !== id));
@@ -56,7 +56,7 @@ export const useTodo = () => {
     todoIds,
     useTodoValue,
     addTodo,
-    deleteTodo,
+    removeTodo,
     updateTodo,
   };
 };

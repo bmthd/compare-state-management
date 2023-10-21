@@ -5,7 +5,7 @@ type Props = {
 };
 
 export const TodoCard = ({ id }: Props) => {
-  const { useTodoValue, updateTodo, deleteTodo } = useTodo();
+  const { useTodoValue, updateTodo, removeTodo } = useTodo();
   const todo = useTodoValue(id);
   const { text, isComplete } = todo;
 
@@ -17,7 +17,7 @@ export const TodoCard = ({ id }: Props) => {
   };
 
   const handleClick = () => {
-    deleteTodo(id);
+    removeTodo(id);
   };
 
   return (

@@ -1,4 +1,4 @@
-import { useTodo } from "@/app/jotai/jotai";
+import { useTodo } from "./zustand";
 
 type Props = {
   id: number;
