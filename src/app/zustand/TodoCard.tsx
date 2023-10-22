@@ -1,10 +1,12 @@
+import { NotifyRerender } from "@/components/NofigyRerender";
+import { memo } from "react";
 import { useTodo } from "./zustand";
 
 type Props = {
   id: number;
 };
 
-export const TodoCard = ({ id }: Props) => {
+export const TodoCard = memo(function TodoCard({ id }: Props) {
   const { useTodoValue, updateTodo, removeTodo } = useTodo();
   const todo = useTodoValue(id);
   const { text, isComplete } = todo;
@@ -29,6 +31,7 @@ export const TodoCard = ({ id }: Props) => {
           削除
         </button>
       </div>
+      <NotifyRerender />
     </div>
   );
-};
+});

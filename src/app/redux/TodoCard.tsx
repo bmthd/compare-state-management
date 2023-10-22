@@ -1,4 +1,5 @@
 import { useTodo } from "@/app/redux/redux";
+import { NotifyRerender } from "@/components/NofigyRerender";
 
 type Props = {
   id: number;
@@ -29,6 +30,7 @@ export const TodoCard = ({ id }: Props) => {
           削除
         </button>
       </div>
+      <NotifyRerender />
     </div>
   );
 };

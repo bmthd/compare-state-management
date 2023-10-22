@@ -2,10 +2,12 @@
 
 import { Todo } from "@/types";
 import { FormEventHandler, useCallback } from "react";
-import { useTodo } from "./zustand";
 
-export const AddTodoForm = () => {
-  const { addTodo } = useTodo();
+type Props = {
+  onClick: (todo: Todo) => void;
+};
+
+export const AddTodoForm = ({ onClick }: Props) => {
   const handleSubmit: FormEventHandler<HTMLFormElement> = useCallback(
     (e) => {
       e.preventDefault();
@@ -14,10 +16,10 @@ export const AddTodoForm = () => {
         text: String(formData.get("todo")),
         isComplete: false,
       };
-      addTodo(todo);
+      onClick(todo);
       e.currentTarget.reset();
     },
-    [addTodo]
+    [onClick]
   );
 
   return (

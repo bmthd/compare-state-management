@@ -28,16 +28,16 @@ export const useTodo = () => {
   const todoIds = todos.map((_, i) => i);
 
   const useTodoValue = (index: number) => {
-    return todos[index];
+    return useTodoStore(useCallback((state) => state.todos[index], [index]));
   };
 
-  const addTodo = useCallback((todo: Todo) => add(todo), []);
+  const addTodo = useCallback((todo: Todo) => add(todo), [add]);
 
-  const removeTodo = useCallback((id: number) => remove(id), []);
+  const removeTodo = useCallback((id: number) => remove(id), [remove]);
 
   const updateTodo = useCallback(
     (id: number, todo: Todo) => update(id, todo),
-    []
+    [update]
   );
 
   return {
