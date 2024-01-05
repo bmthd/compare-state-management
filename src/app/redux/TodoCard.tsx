@@ -1,5 +1,5 @@
 import { useTodo } from "@/app/redux/redux";
-import { NotifyRerender } from "@/components/NofigyRerender";
+import { NotifyRerender } from "@/components/NofifyRerender";
 
 type Props = {
   id: number;

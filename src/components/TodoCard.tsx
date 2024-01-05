@@ -1,4 +1,4 @@
-import { NotifyRerender } from "@/components/NofigyRerender";
+import { NotifyRerender } from "@/components/NofifyRerender";
 import { Todo } from "@/types";
 import { memo } from "react";
 

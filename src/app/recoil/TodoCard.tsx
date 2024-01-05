@@ -1,5 +1,5 @@
 import { useTodo } from "@/app/recoil/recoil";
-import { NotifyRerender } from "@/components/NofigyRerender";
+import { NotifyRerender } from "@/components/NofifyRerender";
 import { memo } from "react";
 
 type Props = {
